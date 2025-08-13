@@ -8,11 +8,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 gradient-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">S</span>
-            </div>
+            <img 
+              src="/lovable-uploads/3535eb6f-0316-4938-9ac4-14a0c903074a.png" 
+              alt="Sys-Info Logo" 
+              className="h-12 w-auto"
+            />
             <div>
-              <h1 className="text-2xl font-bold text-foreground">SYS-INFO</h1>
               <p className="text-sm text-muted-foreground">Solutions informatiques professionnelles</p>
             </div>
           </div>

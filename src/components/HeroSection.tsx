@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/bureautique-hero.jpg";
+import heroImage from "@/assets/bureautique-hero-red.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-primary/5">
+    <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-secondary/5">
       <div className="container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -12,7 +12,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
                 Votre partenaire
-                <span className="gradient-hero bg-clip-text text-transparent"> 
+                <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"> 
                   {" "}technologique{" "}
                 </span>
                 de confiance
@@ -60,7 +60,7 @@ const HeroSection = () => {
                 alt="Services informatiques professionnels Sys-Info"
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent" />
             </div>
             
             {/* Floating Stats */}
