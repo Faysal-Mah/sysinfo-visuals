@@ -4,8 +4,13 @@ import heroImage from "@/assets/bureautique-hero-red.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-secondary/5">
-      <div className="container mx-auto px-4 py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-secondary/5 geometric-bg">
+      {/* Floating geometric elements */}
+      <div className="absolute top-20 right-20 w-20 h-20 bg-primary/10 rounded-full floating-element z-10"></div>
+      <div className="absolute bottom-32 left-16 w-16 h-16 bg-gradient-to-tr from-primary/20 to-secondary/20 transform rotate-45 floating-delayed z-10"></div>
+      <div className="absolute top-1/2 right-1/4 w-12 h-12 border-2 border-primary/30 rounded-full floating-element z-10"></div>
+      
+      <div className="container mx-auto px-4 py-20 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">
@@ -54,13 +59,14 @@ const HeroSection = () => {
 
           {/* Hero Image */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-strong">
+            <div className="relative rounded-2xl overflow-hidden shadow-strong shape-diagonal">
               <img
                 src={heroImage}
                 alt="Services informatiques professionnels Sys-Info"
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-primary/10 to-transparent" />
+              <div className="absolute top-4 right-4 w-8 h-8 border-2 border-white/40 rounded-full animate-pulse"></div>
             </div>
             
             {/* Floating Stats */}

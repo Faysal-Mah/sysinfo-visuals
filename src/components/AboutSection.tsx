@@ -11,8 +11,13 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-card">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-card relative overflow-hidden">
+      {/* Floating tech elements */}
+      <div className="absolute top-1/4 right-10 w-6 h-6 bg-primary/20 rounded-sm transform rotate-45 floating-element"></div>
+      <div className="absolute bottom-1/3 left-20 w-8 h-8 border border-secondary/30 rounded-full floating-delayed"></div>
+      <div className="absolute top-1/2 right-1/3 w-4 h-4 bg-gradient-to-r from-primary/30 to-secondary/30 floating-element"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6">

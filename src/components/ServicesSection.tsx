@@ -38,8 +38,12 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-20 bg-gradient-subtle">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 bg-gradient-subtle geometric-bg relative">
+      {/* Decorative elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full floating-element"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 border border-primary/20 transform rotate-12 floating-delayed"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -55,7 +59,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm"
+              className="group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden"
             >
               {/* Service Image */}
               <div className="relative h-48 overflow-hidden rounded-t-lg">
@@ -64,10 +68,13 @@ const ServicesSection = () => {
                   alt={`Service ${service.title} - Sys-Info`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <service.icon className="h-8 w-8 text-primary-foreground" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 floating-element">
+                  <service.icon className="h-8 w-8 text-primary-foreground drop-shadow-lg" />
                 </div>
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-secondary/30 to-transparent shape-primary"></div>
+                <div className="absolute top-2 right-2 w-3 h-3 bg-primary/60 rounded-full animate-pulse"></div>
               </div>
 
               <CardHeader className="pb-2">

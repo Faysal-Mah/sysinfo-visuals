@@ -60,9 +60,14 @@
     --shadow-strong: 0 8px 32px hsla(var(--primary), 0.16);
     --shadow-glow: 0 0 32px hsla(var(--primary-glow), 0.3);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Modern geometric shapes */
+  --shape-primary: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+  --shape-secondary: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+  --shape-diagonal: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
   }
 
   .dark {
@@ -154,5 +159,62 @@
 
   .transition-bounce {
     transition: var(--transition-bounce);
+  }
+
+  /* Modern graphic elements */
+  .shape-diagonal {
+    clip-path: var(--shape-diagonal);
+  }
+
+  .shape-primary {
+    clip-path: var(--shape-primary);
+  }
+
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .geometric-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .geometric-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(45deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 15% 100%);
+    z-index: 0;
+  }
+
+  .geometric-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(-45deg, hsl(var(--primary) / 0.05), transparent);
+    clip-path: polygon(85% 0, 100% 15%, 100% 100%, 0 100%, 0 0);
+    z-index: 0;
+  }
+
+  .parallax-element {
+    transform: translateZ(0);
+    will-change: transform;
   }
 }

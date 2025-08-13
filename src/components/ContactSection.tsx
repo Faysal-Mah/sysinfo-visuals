@@ -37,8 +37,16 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 gradient-subtle">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 gradient-subtle relative overflow-hidden">
+      {/* Modern geometric overlays */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/10 to-transparent shape-diagonal"></div>
+        <div className="absolute bottom-0 left-0 w-1/4 h-3/4 bg-gradient-to-t from-secondary/20 to-transparent shape-secondary"></div>
+        <div className="absolute top-1/4 left-1/4 w-20 h-20 border border-primary/20 rounded-full floating-element"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-12 h-12 bg-primary/10 transform rotate-45 floating-delayed"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
