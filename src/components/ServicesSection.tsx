@@ -7,30 +7,31 @@ import maintenanceImage from "@/assets/maintenance-service.jpg";
 
 const services = [
   {
+    icon: Calculator,
+    title: "Caisses enregistreuses",
+    description: "Spécialistes des solutions de caisse pour commerces. Caisses alpha-numériques et tactiles, programmation sur mesure selon votre activité.",
+    image: caissesImage,
+    features: ["Solutions personnalisées", "Formation complète", "Programmation sur mesure", "Support technique dédié"],
+    highlight: true
+  },
+  {
     icon: Monitor,
     title: "Bureautique / Informatique",
-    description: "Vente toutes marques, dépannage en atelier ou sur site, livraison et configuration, consommables et périphériques",
-    image: audiovisuelImage, // Will use hero image as reference
+    description: "Solutions informatiques complètes pour professionnels : vente, installation, maintenance et support technique toutes marques.",
+    image: audiovisuelImage,
     features: ["Vente toutes marques", "Dépannage sur site", "Configuration complète"]
   },
   {
     icon: Volume2,
     title: "Audio-visuel",
-    description: "Étude des salles, conseil, montage et installation complète, incluant tirage du câblage et électricité",
+    description: "Étude, conseil et installation d'équipements audio-visuels professionnels avec câblage et mise en service complète.",
     image: audiovisuelImage,
     features: ["Étude personnalisée", "Installation complète", "Réparation toutes marques"]
   },
   {
-    icon: Calculator,
-    title: "Caisses enregistreuses",
-    description: "Conseil et vente, programmation complète et personnalisée, caisses alpha-numériques ou tactiles",
-    image: caissesImage,
-    features: ["Solutions sur mesure", "Formation incluse", "Support technique"]
-  },
-  {
     icon: Wrench,
     title: "Maintenance / Dépannage",
-    description: "Intervention rapide, diagnostic professionnel et réparation sur site ou en atelier avec pièces d'origine",
+    description: "Intervention rapide sur site ou en atelier. Diagnostic professionnel et réparation avec pièces d'origine certifiées.",
     image: maintenanceImage,
     features: ["Intervention rapide", "Diagnostic professionnel", "Pièces d'origine"]
   }
@@ -50,7 +51,7 @@ const ServicesSection = () => {
             Nos Services
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Des solutions complètes pour tous vos besoins technologiques professionnels
+            Experts en caisses enregistreuses et partenaires privilégiés du commerce de proximité
           </p>
         </div>
 
@@ -59,7 +60,9 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden"
+              className={`group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden ${
+                service.highlight ? 'ring-2 ring-primary/50 shadow-strong' : ''
+              }`}
             >
               {/* Service Image */}
               <div className="relative h-48 overflow-hidden rounded-t-lg">

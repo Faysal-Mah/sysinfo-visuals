@@ -26,29 +26,30 @@ const AboutSection = () => {
                 Qui sommes-nous ?
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Votre expert informatique de proximité
+                Partenaire privilégié du commerce neuchâtelois
               </h2>
             </div>
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                <strong className="text-foreground">Sys-Info</strong> est une petite entreprise 
-                de la Chaux-de-Fonds spécialisée dans la bureautique, l'informatique, 
-                les caisses enregistreuses et l'audio-visuel.
+                <strong className="text-foreground">Sys-Info</strong> est LE spécialiste des caisses enregistreuses 
+                dans la région de La Chaux-de-Fonds et Marin-Epagnier. Partenaire privilégié du commerce 
+                de proximité depuis 29 ans.
               </p>
               
               <p>
-                Active dans ces domaines depuis plus de <strong className="text-primary">29 ans</strong>, 
-                notre équipe a su évoluer au gré des nouvelles technologies pour acquérir 
-                une solide expérience dans toutes ses activités.
+                Nous équipons et accompagnons les <strong className="text-primary">commerces locaux</strong> : 
+                boulangeries, pharmacies, magasins de vêtements, restaurants, épiceries et bien d'autres. 
+                Notre expertise régionale nous permet de proposer des solutions parfaitement adaptées.
               </p>
 
               <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-primary">
-                <h3 className="font-semibold text-foreground mb-2">Nous vous proposons :</h3>
+                <h3 className="font-semibold text-foreground mb-2">Notre engagement local :</h3>
                 <ul className="space-y-1 text-sm">
-                  <li>✓ Un conseil fiable et personnalisé</li>
-                  <li>✓ Des livraisons de consommables (1 jour ouvrable)</li>
-                  <li>✓ Un service technique professionnel</li>
+                  <li>✓ Connaissance parfaite du tissu commercial régional</li>
+                  <li>✓ Intervention rapide dans tout le canton de Neuchâtel</li>
+                  <li>✓ Solutions adaptées aux spécificités locales</li>
+                  <li>✓ Partenariat durable avec les commerces de proximité</li>
                 </ul>
               </div>
             </div>

@@ -16,24 +16,24 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                Votre partenaire
+                Spécialiste
                 <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"> 
-                  {" "}technologique{" "}
+                  {" "}caisses enregistreuses{" "}
                 </span>
-                de confiance
+                et commerce de proximité
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Depuis plus de 29 ans, Sys-Info accompagne les entreprises de la région 
-                avec des solutions informatiques complètes et personnalisées.
+                Depuis 29 ans, Sys-Info équipe et accompagne les commerces de la région 
+                avec des solutions de caisse sur mesure et un service de proximité inégalé.
               </p>
             </div>
 
             {/* Key Points */}
             <div className="space-y-3">
               {[
-                "Conseil personnalisé et expertise technique",
-                "Intervention rapide sur site ou en atelier", 
-                "Support technique toutes marques"
+                "Caisses enregistreuses alpha-numériques et tactiles",
+                "Installation et programmation personnalisée", 
+                "Partenaire privilégié du commerce local"
               ].map((point, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
