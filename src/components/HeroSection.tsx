@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/bureautique-hero-red.jpg";
+import { ArrowRight, CheckCircle, Calculator, ShoppingCart, Users, Award } from "lucide-react";
+import heroImage from "@/assets/casio-cash-register.jpg";
 
 const HeroSection = () => {
   return (
@@ -16,30 +16,42 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                Spécialiste
                 <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"> 
-                  {" "}caisses enregistreuses{" "}
+                  Caisses Enregistreuses{" "}
                 </span>
-                et commerce de proximité
+                <br />Commerce de Proximité
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Depuis 29 ans, Sys-Info équipe et accompagne les commerces de la région 
-                avec des solutions de caisse sur mesure et un service de proximité inégalé.
+              <p className="text-lg text-muted-foreground">
+                29 ans d'expertise • Solutions Casio • Service régional
               </p>
             </div>
 
-            {/* Key Points */}
-            <div className="space-y-3">
-              {[
-                "Caisses enregistreuses alpha-numériques et tactiles",
-                "Installation et programmation personnalisée", 
-                "Partenaire privilégié du commerce local"
-              ].map((point, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="text-foreground">{point}</span>
+            {/* Key Icons */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <Calculator className="h-6 w-6 text-primary" />
                 </div>
-              ))}
+                <span className="font-medium">Casio Expert</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <ShoppingCart className="h-6 w-6 text-primary" />
+                </div>
+                <span className="font-medium">Commerce Local</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <span className="font-medium">Service Proximité</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <span className="font-medium">29 ans</span>
+              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -48,11 +60,12 @@ const HeroSection = () => {
                 size="lg" 
                 className="gradient-primary shadow-medium hover:shadow-strong transition-smooth"
               >
-                Découvrir nos services
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Calculator className="mr-2 h-5 w-5" />
+                Nos Caisses
               </Button>
               <Button variant="outline" size="lg" className="transition-smooth">
-                Nous contacter
+                <Users className="mr-2 h-5 w-5" />
+                Contact
               </Button>
             </div>
           </div>
@@ -62,7 +75,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-strong shape-diagonal">
               <img
                 src={heroImage}
-                alt="Services informatiques professionnels Sys-Info"
+                alt="Caisse enregistreuse Casio - Solutions professionnelles Sys-Info"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-primary/10 to-transparent" />

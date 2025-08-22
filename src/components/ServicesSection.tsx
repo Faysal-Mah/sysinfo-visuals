@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Monitor, Volume2, Calculator, Wrench } from "lucide-react";
+import { Monitor, Volume2, Calculator, Wrench, Settings, Zap, CheckCircle, Star } from "lucide-react";
 import audiovisuelImage from "@/assets/audiovisuel-service.jpg";
 import caissesImage from "@/assets/caisses-service.jpg";
 import maintenanceImage from "@/assets/maintenance-service.jpg";
@@ -8,32 +8,33 @@ import maintenanceImage from "@/assets/maintenance-service.jpg";
 const services = [
   {
     icon: Calculator,
-    title: "Caisses enregistreuses",
-    description: "Spécialistes des solutions de caisse pour commerces. Caisses alpha-numériques et tactiles, programmation sur mesure selon votre activité.",
+    title: "Caisses Casio",
+    description: "Expert Casio • Solutions sur mesure",
     image: caissesImage,
-    features: ["Solutions personnalisées", "Formation complète", "Programmation sur mesure", "Support technique dédié"],
-    highlight: true
+    features: ["Casio officiel", "Installation", "Formation", "Support"],
+    highlight: true,
+    stats: "500+ installations"
   },
   {
-    icon: Monitor,
-    title: "Bureautique / Informatique",
-    description: "Solutions informatiques complètes pour professionnels : vente, installation, maintenance et support technique toutes marques.",
+    icon: Settings,
+    title: "Installation",
+    description: "Service complet • Mise en service",
     image: audiovisuelImage,
-    features: ["Vente toutes marques", "Dépannage sur site", "Configuration complète"]
+    features: ["Livraison", "Configuration", "Tests"]
   },
   {
-    icon: Volume2,
-    title: "Audio-visuel",
-    description: "Étude, conseil et installation d'équipements audio-visuels professionnels avec câblage et mise en service complète.",
-    image: audiovisuelImage,
-    features: ["Étude personnalisée", "Installation complète", "Réparation toutes marques"]
-  },
-  {
-    icon: Wrench,
-    title: "Maintenance / Dépannage",
-    description: "Intervention rapide sur site ou en atelier. Diagnostic professionnel et réparation avec pièces d'origine certifiées.",
+    icon: Zap,
+    title: "Maintenance",
+    description: "Intervention rapide • Dépannage",
     image: maintenanceImage,
-    features: ["Intervention rapide", "Diagnostic professionnel", "Pièces d'origine"]
+    features: ["Diagnostic", "Réparation", "Pièces"]
+  },
+  {
+    icon: Star,
+    title: "Formation",
+    description: "Accompagnement • Support utilisateur",
+    image: audiovisuelImage,
+    features: ["Formation", "Manuel", "Assistance"]
   }
 ];
 
@@ -47,11 +48,16 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-4">
+            <div className="p-4 rounded-full bg-primary/10">
+              <Calculator className="h-12 w-12 text-primary" />
+            </div>
+          </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Nos Services
+            Services Casio
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Experts en caisses enregistreuses et partenaires privilégiés du commerce de proximité
+          <p className="text-lg text-muted-foreground">
+            Expert • Installation • Support
           </p>
         </div>
 
@@ -81,56 +87,74 @@ const ServicesSection = () => {
               </div>
 
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-foreground group-hover:text-primary transition-smooth">
+                <CardTitle className="text-lg text-foreground group-hover:text-primary transition-smooth flex items-center gap-2">
+                  <service.icon className="h-5 w-5" />
                   {service.title}
                 </CardTitle>
                 <CardDescription className="text-sm">
                   {service.description}
                 </CardDescription>
+                {service.stats && (
+                  <div className="text-xs text-primary font-medium">
+                    {service.stats}
+                  </div>
+                )}
               </CardHeader>
 
               <CardContent className="space-y-4">
-                {/* Features List */}
-                <ul className="space-y-2">
+                {/* Features Grid */}
+                <div className="grid grid-cols-2 gap-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mr-3 flex-shrink-0" />
+                    <div key={idx} className="flex items-center text-xs text-muted-foreground">
+                      <CheckCircle className="w-3 h-3 text-primary mr-2 flex-shrink-0" />
                       {feature}
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
                 <Button 
                   variant="outline" 
                   size="sm" 
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
                 >
-                  En savoir plus
+                  <Calculator className="mr-2 h-4 w-4" />
+                  Devis
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Additional Services */}
-        <div className="mt-16 text-center">
-          <div className="bg-card rounded-2xl shadow-medium p-8 border">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Services supplémentaires
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Livraison / Installation</h4>
-                <p className="text-muted-foreground text-sm">
-                  Service complet de livraison et installation sur site avec mise en service et formation utilisateur.
-                </p>
+        {/* Stats Section */}
+        <div className="mt-16">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <Calculator className="h-8 w-8 text-primary" />
               </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">Support Technique</h4>
-                <p className="text-muted-foreground text-sm">
-                  Assistance technique rapide et professionnelle pour maintenir votre productivité.
-                </p>
+              <div className="text-2xl font-bold text-primary">500+</div>
+              <div className="text-sm text-muted-foreground">Caisses installées</div>
+            </div>
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <Settings className="h-8 w-8 text-primary" />
               </div>
+              <div className="text-2xl font-bold text-primary">24h</div>
+              <div className="text-sm text-muted-foreground">Intervention</div>
+            </div>
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <Star className="h-8 w-8 text-primary" />
+              </div>
+              <div className="text-2xl font-bold text-primary">29</div>
+              <div className="text-sm text-muted-foreground">Années</div>
+            </div>
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <CheckCircle className="h-8 w-8 text-primary" />
+              </div>
+              <div className="text-2xl font-bold text-primary">100%</div>
+              <div className="text-sm text-muted-foreground">Satisfaction</div>
             </div>
           </div>
         </div>

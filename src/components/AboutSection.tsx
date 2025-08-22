@@ -1,13 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Award, Clock, MapPin } from "lucide-react";
+import { Users, Award, Clock, MapPin, Calculator, Star, CheckCircle, Zap } from "lucide-react";
 
 const AboutSection = () => {
   const stats = [
-    { icon: Clock, label: "Années d'expérience", value: "29+" },
-    { icon: Users, label: "Clients satisfaits", value: "500+" },
-    { icon: Award, label: "Certifications", value: "Toutes marques" },
-    { icon: MapPin, label: "Zones d'intervention", value: "Région NE" }
+    { icon: Calculator, label: "Caisses", value: "500+" },
+    { icon: Clock, label: "Années", value: "29" },
+    { icon: Star, label: "Expert", value: "Casio" },
+    { icon: Zap, label: "Service", value: "24h" }
   ];
 
   return (
@@ -22,35 +22,37 @@ const AboutSection = () => {
           {/* Content */}
           <div className="space-y-6">
             <div>
-              <Badge variant="secondary" className="mb-4">
-                Qui sommes-nous ?
-              </Badge>
+              <div className="flex items-center gap-2 mb-4">
+                <Calculator className="h-6 w-6 text-primary" />
+                <Badge variant="secondary">Expert Casio</Badge>
+              </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Partenaire privilégié du commerce neuchâtelois
+                Commerce Neuchâtelois
               </h2>
             </div>
 
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                <strong className="text-foreground">Sys-Info</strong> est LE spécialiste des caisses enregistreuses 
-                dans la région de La Chaux-de-Fonds et Marin-Epagnier. Partenaire privilégié du commerce 
-                de proximité depuis 29 ans.
-              </p>
-              
-              <p>
-                Nous équipons et accompagnons les <strong className="text-primary">commerces locaux</strong> : 
-                boulangeries, pharmacies, magasins de vêtements, restaurants, épiceries et bien d'autres. 
-                Notre expertise régionale nous permet de proposer des solutions parfaitement adaptées.
+            <div className="space-y-6">
+              <p className="text-lg text-muted-foreground">
+                <strong className="text-primary">29 ans</strong> d'expertise • <strong className="text-primary">500+ installations</strong> • Spécialiste <strong className="text-primary">Casio</strong>
               </p>
 
-              <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-primary">
-                <h3 className="font-semibold text-foreground mb-2">Notre engagement local :</h3>
-                <ul className="space-y-1 text-sm">
-                  <li>✓ Connaissance parfaite du tissu commercial régional</li>
-                  <li>✓ Intervention rapide dans tout le canton de Neuchâtel</li>
-                  <li>✓ Solutions adaptées aux spécificités locales</li>
-                  <li>✓ Partenariat durable avec les commerces de proximité</li>
-                </ul>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Expert Casio</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Service 24h</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Installation</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span className="text-sm">Formation</span>
+                </div>
               </div>
             </div>
           </div>
@@ -75,17 +77,16 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Brands Section */}
+        {/* Casio Focus */}
         <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-foreground mb-8">
-            Partenaires de confiance
-          </h3>
-          <div className="flex justify-center items-center space-x-8 opacity-60">
-            <div className="text-2xl font-bold text-muted-foreground">Brother</div>
-            <div className="text-2xl font-bold text-muted-foreground">Kyocera</div>
-            <div className="text-2xl font-bold text-muted-foreground">HP</div>
-            <div className="text-2xl font-bold text-muted-foreground">Casio</div>
+          <div className="flex justify-center items-center gap-4 mb-6">
+            <Calculator className="h-8 w-8 text-primary" />
+            <div className="text-3xl font-bold text-primary">CASIO</div>
+            <Star className="h-8 w-8 text-primary" />
           </div>
+          <p className="text-muted-foreground">
+            Partenaire officiel • Expert certifié • Service autorisé
+          </p>
         </div>
       </div>
     </section>

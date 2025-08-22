@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Calculator, Zap } from "lucide-react";
 
 const ContactSection = () => {
   const contactInfo = [
@@ -49,11 +49,15 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
+          <div className="flex justify-center items-center gap-2 mb-4">
+            <Phone className="h-6 w-6 text-primary" />
+            <Calculator className="h-6 w-6 text-primary" />
+          </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Contactez-nous
+            Contact
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Notre équipe est à votre disposition pour tous vos besoins informatiques
+          <p className="text-lg text-muted-foreground">
+            Service rapide • Devis gratuit • Intervention 24h
           </p>
         </div>
 
@@ -89,12 +93,15 @@ const ContactSection = () => {
 
         {/* CTA Section */}
         <div className="bg-card rounded-2xl shadow-medium p-8 border text-center">
+          <div className="flex justify-center items-center gap-2 mb-4">
+            <Zap className="h-8 w-8 text-primary" />
+            <Calculator className="h-8 w-8 text-primary" />
+          </div>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Besoin d'une intervention ?
+            Intervention Casio
           </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Contactez-nous dès maintenant pour un devis gratuit ou une intervention d'urgence. 
-            Notre équipe se déplace rapidement dans toute la région.
+          <p className="text-muted-foreground mb-6">
+            Devis gratuit • Service 24h • Expert Casio
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -103,11 +110,11 @@ const ContactSection = () => {
               className="gradient-primary shadow-medium hover:shadow-strong transition-smooth"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Appeler maintenant
+              032 753 50 50
             </Button>
             <Button variant="outline" size="lg">
-              <Mail className="mr-2 h-5 w-5" />
-              Demander un devis
+              <Calculator className="mr-2 h-5 w-5" />
+              Devis Casio
             </Button>
           </div>
         </div>

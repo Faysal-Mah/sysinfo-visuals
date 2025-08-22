@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Users, Store, Heart } from "lucide-react";
+import { MapPin, Users, Store, Heart, Calculator, CheckCircle } from "lucide-react";
 
 const RegionalSection = () => {
   const regionalData = [
@@ -50,15 +50,15 @@ const RegionalSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-4">
-            Ancrage régional
-          </Badge>
+          <div className="flex justify-center items-center gap-2 mb-4">
+            <MapPin className="h-6 w-6 text-primary" />
+            <Badge variant="secondary">Région</Badge>
+          </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Au cœur du commerce neuchâtelois
+            Commerce Neuchâtelois
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Depuis près de trois décennies, nous accompagnons les commerces de notre région 
-            avec des solutions adaptées et un service de proximité incomparable.
+          <p className="text-lg text-muted-foreground">
+            29 ans • Proximité • Expertise locale
           </p>
         </div>
 
