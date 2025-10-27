@@ -116,6 +116,7 @@ const ServicesSection = () => {
                   variant="outline" 
                   size="sm" 
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
+                  onClick={() => window.location.href = `/devis?service=${service.title.toLowerCase().includes('caisse') ? 'caisses' : 'bureautique'}`}
                 >
                   <Calculator className="mr-2 h-4 w-4" />
                   Devis

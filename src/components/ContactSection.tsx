@@ -112,7 +112,11 @@ const ContactSection = () => {
               <Phone className="mr-2 h-5 w-5" />
               032 753 50 50
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => window.location.href = '/devis?service=caisses'}
+            >
               <Calculator className="mr-2 h-5 w-5" />
               Devis Casio
             </Button>
