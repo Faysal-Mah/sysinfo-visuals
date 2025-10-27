@@ -24,7 +24,10 @@ const Header = () => {
               Accueil
             </a>
             <a href="#services" className="text-foreground hover:text-primary transition-smooth font-medium">
-              Services
+              Caisses
+            </a>
+            <a href="#bureautique" className="text-foreground hover:text-primary transition-smooth font-medium">
+              Bureautique
             </a>
             <a href="#contact" className="text-foreground hover:text-primary transition-smooth font-medium">
               Contact

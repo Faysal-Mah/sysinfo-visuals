@@ -200,26 +200,61 @@ const Quote = () => {
                       <h3 className="text-lg font-semibold text-foreground mb-4">Détails bureautique</h3>
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="clientType" className="text-foreground">Type de client *</Label>
+                      <Select required>
+                        <SelectTrigger id="clientType" className="bg-background">
+                          <SelectValue placeholder="Sélectionner" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="particulier">Particulier</SelectItem>
+                          <SelectItem value="pme">PME</SelectItem>
+                          <SelectItem value="association">Association</SelectItem>
+                          <SelectItem value="independant">Indépendant</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="bureautiqueService" className="text-foreground">Service souhaité *</Label>
+                      <Select required>
+                        <SelectTrigger id="bureautiqueService" className="bg-background">
+                          <SelectValue placeholder="Sélectionner" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="vente">Vente & Installation</SelectItem>
+                          <SelectItem value="conseil">Conseil & Accompagnement</SelectItem>
+                          <SelectItem value="maintenance">Maintenance & Dépannage</SelectItem>
+                          <SelectItem value="securite">Sécurité informatique</SelectItem>
+                          <SelectItem value="reprographie">Impression & Reprographie</SelectItem>
+                          <SelectItem value="support">Assistance & Support</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="equipmentType" className="text-foreground">Type d'équipement *</Label>
-                        <Select required>
+                        <Label htmlFor="equipmentType" className="text-foreground">Équipement concerné</Label>
+                        <Select>
                           <SelectTrigger id="equipmentType" className="bg-background">
                             <SelectValue placeholder="Sélectionner" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="printer">Imprimante</SelectItem>
-                            <SelectItem value="copier">Copieur</SelectItem>
-                            <SelectItem value="multifunction">Multifonction</SelectItem>
+                            <SelectItem value="ordinateur">Ordinateur</SelectItem>
+                            <SelectItem value="imprimante">Imprimante</SelectItem>
+                            <SelectItem value="copieur">Copieur</SelectItem>
+                            <SelectItem value="multifonction">Multifonction</SelectItem>
                             <SelectItem value="scanner">Scanner</SelectItem>
-                            <SelectItem value="other">Autre</SelectItem>
+                            <SelectItem value="peripherique">Périphérique</SelectItem>
+                            <SelectItem value="reseau">Réseau</SelectItem>
+                            <SelectItem value="autre">Autre</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="volume" className="text-foreground">Volume mensuel</Label>
-                        <Input id="volume" placeholder="Ex: 5000 pages/mois" className="bg-background" />
+                        <Label htmlFor="quantity" className="text-foreground">Nombre d'équipements</Label>
+                        <Input id="quantity" type="number" min="1" placeholder="1" className="bg-background" />
                       </div>
                     </div>
 
@@ -230,17 +265,32 @@ const Quote = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="needDate" className="text-foreground">Date de besoin</Label>
+                        <Label htmlFor="needDate" className="text-foreground">Date souhaitée</Label>
                         <Input id="needDate" type="date" className="bg-background" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="requirements" className="text-foreground">Besoins spécifiques</Label>
+                      <Label htmlFor="intervention" className="text-foreground">Lieu d'intervention</Label>
+                      <Select>
+                        <SelectTrigger id="intervention" className="bg-background">
+                          <SelectValue placeholder="Sélectionner" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="domicile">À domicile</SelectItem>
+                          <SelectItem value="entreprise">En entreprise</SelectItem>
+                          <SelectItem value="distance">À distance</SelectItem>
+                          <SelectItem value="atelier">En atelier</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="requirements" className="text-foreground">Besoins détaillés</Label>
                       <Textarea 
                         id="requirements" 
-                        placeholder="Ex: Impression couleur, recto-verso, connexion WiFi..." 
-                        className="bg-background min-h-[100px]"
+                        placeholder="Décrivez vos besoins: matériel, configuration, problèmes rencontrés, objectifs..." 
+                        className="bg-background min-h-[120px]"
                       />
                     </div>
                   </>
