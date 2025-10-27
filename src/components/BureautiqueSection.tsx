@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Laptop, 
@@ -7,44 +7,57 @@ import {
   Wrench, 
   Lightbulb, 
   Headphones,
-  CheckCircle
+  CheckCircle,
+  Star
 } from "lucide-react";
+import ordinateurImage from "@/assets/ordinateur-service.jpg";
+import imprimanteImage from "@/assets/imprimante-service.jpg";
+import supportImage from "@/assets/support-service.jpg";
+import securiteImage from "@/assets/securite-service.jpg";
 
 const bureautiqueServices = [
   {
     icon: Laptop,
     title: "Vente & Installation",
     description: "Matériel livré et configuré",
-    features: ["Ordinateurs", "Imprimantes", "Copieurs", "Périphériques"]
+    image: ordinateurImage,
+    features: ["Ordinateurs", "Imprimantes", "Copieurs", "Périphériques"],
+    highlight: true,
+    stats: "1000+ équipements"
   },
   {
     icon: Lightbulb,
     title: "Conseil",
     description: "Accompagnement personnalisé",
+    image: ordinateurImage,
     features: ["Choix adapté", "Budget optimisé", "Espace analysé", "Solutions pro"]
   },
   {
     icon: Wrench,
     title: "Maintenance",
     description: "Intervention rapide",
+    image: supportImage,
     features: ["À domicile", "En entreprise", "Préventif", "Réparation"]
   },
   {
     icon: ShieldCheck,
     title: "Sécurité",
     description: "Protection des données",
+    image: securiteImage,
     features: ["Anti-virus", "Sauvegarde", "Chiffrement", "Surveillance"]
   },
   {
     icon: Printer,
     title: "Reprographie",
     description: "Impression professionnelle",
+    image: imprimanteImage,
     features: ["Haute qualité", "Copies", "Numérisation", "Documents"]
   },
   {
     icon: Headphones,
     title: "Support",
     description: "Assistance technique",
+    image: supportImage,
     features: ["À distance", "Sur site", "Configuration", "Suivi"]
   }
 ];
@@ -73,31 +86,48 @@ const BureautiqueSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {bureautiqueServices.map((service, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden"
+              className={`group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden ${
+                service.highlight ? 'ring-2 ring-primary/50 shadow-strong' : ''
+              }`}
             >
-              <CardHeader className="pb-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
-                    <service.icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg text-foreground group-hover:text-primary transition-smooth">
-                      {service.title}
-                    </CardTitle>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {service.description}
-                    </p>
-                  </div>
+              {/* Service Image */}
+              <div className="relative h-48 overflow-hidden rounded-t-lg">
+                <img
+                  src={service.image}
+                  alt={`Service ${service.title} - Sys-Info`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 floating-element">
+                  <service.icon className="h-8 w-8 text-primary-foreground drop-shadow-lg" />
                 </div>
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-secondary/30 to-transparent shape-primary"></div>
+                <div className="absolute top-2 right-2 w-3 h-3 bg-primary/60 rounded-full animate-pulse"></div>
+              </div>
+
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg text-foreground group-hover:text-primary transition-smooth flex items-center gap-2">
+                  <service.icon className="h-5 w-5" />
+                  {service.title}
+                </CardTitle>
+                <CardDescription className="text-sm">
+                  {service.description}
+                </CardDescription>
+                {service.stats && (
+                  <div className="text-xs text-primary font-medium">
+                    {service.stats}
+                  </div>
+                )}
               </CardHeader>
 
-              <CardContent>
+              <CardContent className="space-y-4">
                 {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="grid grid-cols-2 gap-2">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-xs text-muted-foreground">
                       <CheckCircle className="w-3 h-3 text-primary mr-2 flex-shrink-0" />
@@ -105,31 +135,19 @@ const BureautiqueSection = () => {
                     </div>
                   ))}
                 </div>
-              </CardContent>
 
-              {/* Decorative corner */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-primary/10 to-transparent"></div>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
+                  onClick={() => window.location.href = '/devis?service=bureautique'}
+                >
+                  <Laptop className="mr-2 h-4 w-4" />
+                  Devis
+                </Button>
+              </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <div className="p-8 rounded-2xl bg-gradient-primary text-primary-foreground shadow-strong">
-            <h3 className="text-2xl font-bold mb-4">Équipement sur mesure</h3>
-            <p className="mb-6 opacity-90">
-              Particuliers • Professionnels • Accompagnement complet
-            </p>
-            <Button 
-              size="lg"
-              variant="secondary"
-              onClick={() => window.location.href = '/devis?service=bureautique'}
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
-            >
-              <Laptop className="mr-2 h-5 w-5" />
-              Demander un devis
-            </Button>
-          </div>
         </div>
 
         {/* Stats Section */}
