@@ -22,10 +22,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">Nos Services</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/80">
-              <li>• Bureautique / Informatique</li>
-              <li>• Audio-visuel</li>
+              <li>• Bureautique</li>
+              <li>• Informatique</li>
               <li>• Caisses enregistreuses</li>
-              <li>• Maintenance & Dépannage</li>
+              <li>• Audio-visuel</li>
             </ul>
           </div>
 
