@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, Monitor, ArrowLeft, Send, CheckCircle } from "lucide-react";
+import { Printer, Monitor, Calculator, Volume2, ArrowLeft, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 const Quote = () => {
   const [searchParams] = useSearchParams();
   const serviceParam = searchParams.get("service");
-  const [service, setService] = useState(serviceParam || "caisses");
+  const [service, setService] = useState(serviceParam || "bureautique");
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
@@ -25,6 +25,16 @@ const Quote = () => {
       title: "Demande envoyée",
       description: "Nous vous contacterons sous 24h",
     });
+  };
+
+  const getServiceIcon = () => {
+    switch(service) {
+      case "bureautique": return <Printer className="h-8 w-8 text-primary" />;
+      case "informatique": return <Monitor className="h-8 w-8 text-primary" />;
+      case "caisses": return <Calculator className="h-8 w-8 text-primary" />;
+      case "audiovisuel": return <Volume2 className="h-8 w-8 text-primary" />;
+      default: return <Printer className="h-8 w-8 text-primary" />;
+    }
   };
 
   if (submitted) {
@@ -42,7 +52,7 @@ const Quote = () => {
                 </div>
                 <CardTitle className="text-2xl text-foreground">Demande reçue</CardTitle>
                 <CardDescription>
-                  Nous vous contacterons sous 24h pour établir votre devis personnalisé
+                  Nous vous contacterons sous 24h pour établir votre offre personnalisée
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -67,14 +77,10 @@ const Quote = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-2 mb-4">
-              {service === "caisses" ? (
-                <Calculator className="h-8 w-8 text-primary" />
-              ) : (
-                <Monitor className="h-8 w-8 text-primary" />
-              )}
+              {getServiceIcon()}
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Demande de devis
+              Demande d'offre
             </h1>
             <p className="text-lg text-muted-foreground">
               Remplissez le formulaire • Réponse sous 24h
@@ -86,29 +92,41 @@ const Quote = () => {
             <CardHeader>
               <CardTitle className="text-xl text-foreground">Informations</CardTitle>
               <CardDescription>
-                Tous les champs sont requis
+                Tous les champs marqués * sont requis
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Service Selection */}
                 <div className="space-y-2">
-                  <Label htmlFor="service" className="text-foreground">Type de service</Label>
+                  <Label htmlFor="service" className="text-foreground">Type de service *</Label>
                   <Select value={service} onValueChange={setService}>
                     <SelectTrigger id="service" className="bg-background">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="bureautique">
+                        <div className="flex items-center gap-2">
+                          <Printer className="h-4 w-4" />
+                          Bureautique
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="informatique">
+                        <div className="flex items-center gap-2">
+                          <Monitor className="h-4 w-4" />
+                          Informatique
+                        </div>
+                      </SelectItem>
                       <SelectItem value="caisses">
                         <div className="flex items-center gap-2">
                           <Calculator className="h-4 w-4" />
-                          Caisses enregistreuses Casio
+                          Caisses enregistreuses
                         </div>
                       </SelectItem>
-                      <SelectItem value="bureautique">
+                      <SelectItem value="audiovisuel">
                         <div className="flex items-center gap-2">
-                          <Monitor className="h-4 w-4" />
-                          Bureautique
+                          <Volume2 className="h-4 w-4" />
+                          Audio-visuel
                         </div>
                       </SelectItem>
                     </SelectContent>
@@ -122,8 +140,8 @@ const Quote = () => {
                     <Input id="name" required className="bg-background" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-foreground">Entreprise *</Label>
-                    <Input id="company" required className="bg-background" />
+                    <Label htmlFor="company" className="text-foreground">Entreprise</Label>
+                    <Input id="company" className="bg-background" />
                   </div>
                 </div>
 
@@ -144,7 +162,7 @@ const Quote = () => {
                 </div>
 
                 {/* Service-specific fields */}
-                {service === "caisses" ? (
+                {service === "caisses" && (
                   <>
                     <div className="border-t border-border pt-4">
                       <h3 className="text-lg font-semibold text-foreground mb-4">Détails caisse enregistreuse</h3>
@@ -172,136 +190,104 @@ const Quote = () => {
                         <Input id="quantity" type="number" min="1" required className="bg-background" />
                       </div>
                     </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="currentSystem" className="text-foreground">Système actuel</Label>
-                        <Input id="currentSystem" placeholder="Ex: Casio SE-S400" className="bg-background" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="installDate" className="text-foreground">Date souhaitée</Label>
-                        <Input id="installDate" type="date" className="bg-background" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="features" className="text-foreground">Fonctionnalités souhaitées</Label>
-                      <Textarea 
-                        id="features" 
-                        placeholder="Ex: Gestion stock, connexion réseau, TPE intégré..." 
-                        className="bg-background min-h-[100px]"
-                      />
-                    </div>
                   </>
-                ) : (
+                )}
+
+                {service === "bureautique" && (
                   <>
                     <div className="border-t border-border pt-4">
                       <h3 className="text-lg font-semibold text-foreground mb-4">Détails bureautique</h3>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="clientType" className="text-foreground">Type de client *</Label>
-                      <Select required>
-                        <SelectTrigger id="clientType" className="bg-background">
-                          <SelectValue placeholder="Sélectionner" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="particulier">Particulier</SelectItem>
-                          <SelectItem value="pme">PME</SelectItem>
-                          <SelectItem value="association">Association</SelectItem>
-                          <SelectItem value="independant">Indépendant</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="bureautiqueService" className="text-foreground">Service souhaité *</Label>
-                      <Select required>
-                        <SelectTrigger id="bureautiqueService" className="bg-background">
-                          <SelectValue placeholder="Sélectionner" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="vente">Vente & Installation</SelectItem>
-                          <SelectItem value="conseil">Conseil & Accompagnement</SelectItem>
-                          <SelectItem value="maintenance">Maintenance & Dépannage</SelectItem>
-                          <SelectItem value="securite">Sécurité informatique</SelectItem>
-                          <SelectItem value="reprographie">Impression & Reprographie</SelectItem>
-                          <SelectItem value="support">Assistance & Support</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="equipmentType" className="text-foreground">Équipement concerné</Label>
-                        <Select>
-                          <SelectTrigger id="equipmentType" className="bg-background">
-                            <SelectValue placeholder="Sélectionner" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="ordinateur">Ordinateur</SelectItem>
-                            <SelectItem value="imprimante">Imprimante</SelectItem>
-                            <SelectItem value="copieur">Copieur</SelectItem>
-                            <SelectItem value="multifonction">Multifonction</SelectItem>
-                            <SelectItem value="scanner">Scanner</SelectItem>
-                            <SelectItem value="peripherique">Périphérique</SelectItem>
-                            <SelectItem value="reseau">Réseau</SelectItem>
-                            <SelectItem value="autre">Autre</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="quantity" className="text-foreground">Nombre d'équipements</Label>
-                        <Input id="quantity" type="number" min="1" placeholder="1" className="bg-background" />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="budget" className="text-foreground">Budget indicatif</Label>
-                        <Input id="budget" placeholder="Ex: 2000 CHF" className="bg-background" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="needDate" className="text-foreground">Date souhaitée</Label>
-                        <Input id="needDate" type="date" className="bg-background" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="intervention" className="text-foreground">Lieu d'intervention</Label>
+                      <Label htmlFor="equipmentType" className="text-foreground">Type d'équipement</Label>
                       <Select>
-                        <SelectTrigger id="intervention" className="bg-background">
+                        <SelectTrigger id="equipmentType" className="bg-background">
                           <SelectValue placeholder="Sélectionner" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="domicile">À domicile</SelectItem>
-                          <SelectItem value="entreprise">En entreprise</SelectItem>
-                          <SelectItem value="distance">À distance</SelectItem>
-                          <SelectItem value="atelier">En atelier</SelectItem>
+                          <SelectItem value="imprimante">Imprimante</SelectItem>
+                          <SelectItem value="copieur">Copieur</SelectItem>
+                          <SelectItem value="multifonction">Multifonction</SelectItem>
+                          <SelectItem value="scanner">Scanner</SelectItem>
+                          <SelectItem value="autre">Autre</SelectItem>
                         </SelectContent>
                       </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="requirements" className="text-foreground">Besoins détaillés</Label>
-                      <Textarea 
-                        id="requirements" 
-                        placeholder="Décrivez vos besoins: matériel, configuration, problèmes rencontrés, objectifs..." 
-                        className="bg-background min-h-[120px]"
-                      />
                     </div>
                   </>
                 )}
 
+                {service === "informatique" && (
+                  <>
+                    <div className="border-t border-border pt-4">
+                      <h3 className="text-lg font-semibold text-foreground mb-4">Détails informatique</h3>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="itEquipment" className="text-foreground">Type d'équipement</Label>
+                      <Select>
+                        <SelectTrigger id="itEquipment" className="bg-background">
+                          <SelectValue placeholder="Sélectionner" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="ordinateur">Ordinateur</SelectItem>
+                          <SelectItem value="laptop">Portable</SelectItem>
+                          <SelectItem value="reseau">Réseau</SelectItem>
+                          <SelectItem value="peripherique">Périphérique</SelectItem>
+                          <SelectItem value="autre">Autre</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </>
+                )}
+
+                {service === "audiovisuel" && (
+                  <>
+                    <div className="border-t border-border pt-4">
+                      <h3 className="text-lg font-semibold text-foreground mb-4">Détails audio-visuel</h3>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="avEquipment" className="text-foreground">Type d'équipement</Label>
+                      <Select>
+                        <SelectTrigger id="avEquipment" className="bg-background">
+                          <SelectValue placeholder="Sélectionner" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="projecteur">Vidéoprojecteur</SelectItem>
+                          <SelectItem value="ecran">Écran</SelectItem>
+                          <SelectItem value="sonorisation">Sonorisation</SelectItem>
+                          <SelectItem value="visioconference">Visioconférence</SelectItem>
+                          <SelectItem value="autre">Autre</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </>
+                )}
+
+                {/* Common fields */}
+                <div className="space-y-2">
+                  <Label htmlFor="serviceType" className="text-foreground">Type de prestation souhaitée</Label>
+                  <Select>
+                    <SelectTrigger id="serviceType" className="bg-background">
+                      <SelectValue placeholder="Sélectionner" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="conseil">Conseil</SelectItem>
+                      <SelectItem value="vente">Vente</SelectItem>
+                      <SelectItem value="installation">Installation</SelectItem>
+                      <SelectItem value="depannage">Dépannage</SelectItem>
+                      <SelectItem value="complet">Service complet</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 {/* Additional Info */}
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground">Informations complémentaires</Label>
+                  <Label htmlFor="message" className="text-foreground">Description de vos besoins</Label>
                   <Textarea 
                     id="message" 
-                    placeholder="Précisez vos besoins..." 
+                    placeholder="Décrivez vos besoins en détail..." 
                     className="bg-background min-h-[120px]"
                   />
                 </div>

@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Calculator, ShoppingCart, Users, Award } from "lucide-react";
-import heroImage from "@/assets/casio-cash-register.jpg";
+import { Printer, Monitor, Calculator, Volume2, Award, MapPin } from "lucide-react";
 
 const HeroSection = () => {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-secondary/5 geometric-bg">
       {/* Floating geometric elements */}
@@ -11,84 +14,94 @@ const HeroSection = () => {
       <div className="absolute top-1/2 right-1/4 w-12 h-12 border-2 border-primary/30 rounded-full floating-element z-10"></div>
       
       <div className="container mx-auto px-4 py-20 relative z-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"> 
-                  Caisses Enregistreuses{" "}
-                </span>
-                <br />Commerce de Proximité
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                29 ans d'expertise • Solutions Casio • Service régional
-              </p>
-            </div>
+        <div className="text-center max-w-4xl mx-auto space-y-8">
+          {/* Main Title */}
+          <div className="space-y-4">
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
+              Votre partenaire{" "}
+              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                informatique
+              </span>
+              <br />depuis 29 ans
+            </h1>
+            <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Bureautique • Informatique • Caisses enregistreuses • Audio-visuel
+            </p>
+          </div>
 
-            {/* Key Icons */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex items-center space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Calculator className="h-6 w-6 text-primary" />
-                </div>
-                <span className="font-medium">Casio Expert</span>
+          {/* Services Icons */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            <button 
+              onClick={() => scrollToSection("bureautique")}
+              className="flex flex-col items-center space-y-3 p-4 rounded-xl bg-card/50 hover:bg-card hover:shadow-medium transition-smooth group"
+            >
+              <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-smooth">
+                <Printer className="h-8 w-8 text-primary" />
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <ShoppingCart className="h-6 w-6 text-primary" />
-                </div>
-                <span className="font-medium">Commerce Local</span>
+              <span className="font-medium text-foreground">Bureautique</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection("informatique")}
+              className="flex flex-col items-center space-y-3 p-4 rounded-xl bg-card/50 hover:bg-card hover:shadow-medium transition-smooth group"
+            >
+              <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-smooth">
+                <Monitor className="h-8 w-8 text-primary" />
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <span className="font-medium">Service Proximité</span>
+              <span className="font-medium text-foreground">Informatique</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection("caisses")}
+              className="flex flex-col items-center space-y-3 p-4 rounded-xl bg-card/50 hover:bg-card hover:shadow-medium transition-smooth group"
+            >
+              <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-smooth">
+                <Calculator className="h-8 w-8 text-primary" />
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <span className="font-medium">29 ans</span>
+              <span className="font-medium text-foreground">Caisses</span>
+            </button>
+            <button 
+              onClick={() => scrollToSection("audiovisuel")}
+              className="flex flex-col items-center space-y-3 p-4 rounded-xl bg-card/50 hover:bg-card hover:shadow-medium transition-smooth group"
+            >
+              <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-smooth">
+                <Volume2 className="h-8 w-8 text-primary" />
               </div>
-            </div>
+              <span className="font-medium text-foreground">Audio-visuel</span>
+            </button>
+          </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="gradient-primary shadow-medium hover:shadow-strong transition-smooth"
-              >
-                <Calculator className="mr-2 h-5 w-5" />
-                Nos Caisses
-              </Button>
-              <Button variant="outline" size="lg" className="transition-smooth">
-                <Users className="mr-2 h-5 w-5" />
-                Contact
-              </Button>
+          {/* Key Stats */}
+          <div className="flex flex-wrap justify-center gap-8 pt-4">
+            <div className="flex items-center space-x-2">
+              <Award className="h-5 w-5 text-primary" />
+              <span className="text-muted-foreground"><strong className="text-foreground">29+</strong> années d'expérience</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <MapPin className="h-5 w-5 text-primary" />
+              <span className="text-muted-foreground"><strong className="text-foreground">2</strong> succursales</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Calculator className="h-5 w-5 text-primary" />
+              <span className="text-muted-foreground"><strong className="text-foreground">500+</strong> caisses installées</span>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-strong shape-diagonal">
-              <img
-                src={heroImage}
-                alt="Caisse enregistreuse Casio - Solutions professionnelles Sys-Info"
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-primary/10 to-transparent" />
-              <div className="absolute top-4 right-4 w-8 h-8 border-2 border-white/40 rounded-full animate-pulse"></div>
-            </div>
-            
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-card rounded-xl shadow-medium p-6 border">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">29+</div>
-                <div className="text-sm text-muted-foreground">années d'expérience</div>
-              </div>
-            </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button 
+              size="lg" 
+              className="gradient-primary shadow-medium hover:shadow-strong transition-smooth"
+              onClick={() => window.location.href = "/offre"}
+            >
+              Demande d'offre
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="transition-smooth"
+              onClick={() => scrollToSection("contact")}
+            >
+              Nous contacter
+            </Button>
           </div>
         </div>
       </div>

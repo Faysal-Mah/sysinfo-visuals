@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, Calculator, Zap } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, FileText, Zap } from "lucide-react";
 
 const ContactSection = () => {
   const contactInfo = [
@@ -51,13 +51,12 @@ const ContactSection = () => {
         <div className="text-center mb-12">
           <div className="flex justify-center items-center gap-2 mb-4">
             <Phone className="h-6 w-6 text-primary" />
-            <Calculator className="h-6 w-6 text-primary" />
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Contact
+            Contactez-nous
           </h2>
           <p className="text-lg text-muted-foreground">
-            Service rapide • Devis gratuit • Intervention 24h
+            Service rapide • Offre gratuite • Intervention 24h
           </p>
         </div>
 
@@ -95,13 +94,12 @@ const ContactSection = () => {
         <div className="bg-card rounded-2xl shadow-medium p-8 border text-center">
           <div className="flex justify-center items-center gap-2 mb-4">
             <Zap className="h-8 w-8 text-primary" />
-            <Calculator className="h-8 w-8 text-primary" />
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Intervention Casio
+            Besoin d'un conseil ou d'une offre?
           </h3>
           <p className="text-muted-foreground mb-6">
-            Devis gratuit • Service 24h • Expert Casio
+            Offre gratuite • Réponse sous 24h • Service personnalisé
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -115,10 +113,10 @@ const ContactSection = () => {
             <Button 
               variant="outline" 
               size="lg"
-              onClick={() => window.location.href = '/devis?service=caisses'}
+              onClick={() => window.location.href = '/offre'}
             >
-              <Calculator className="mr-2 h-5 w-5" />
-              Devis Casio
+              <FileText className="mr-2 h-5 w-5" />
+              Demande d'offre
             </Button>
           </div>
         </div>

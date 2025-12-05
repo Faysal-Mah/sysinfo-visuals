@@ -1,46 +1,68 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Monitor, Volume2, Calculator, Wrench, Settings, Zap, CheckCircle, Star } from "lucide-react";
+import { Printer, Monitor, Calculator, Volume2, Lightbulb, ShoppingCart, Settings, Wrench, CheckCircle, FileText } from "lucide-react";
+import bureautiqueImage from "@/assets/bureautique-kyocera.jpg";
+import informatiqueImage from "@/assets/informatique-service.jpg";
+import caisseImage from "@/assets/caisse-sunmi.jpg";
 import audiovisuelImage from "@/assets/audiovisuel-service.jpg";
-import caissesImage from "@/assets/caisses-service.jpg";
-import maintenanceImage from "@/assets/maintenance-service.jpg";
 
 const services = [
   {
+    id: "bureautique",
+    icon: Printer,
+    title: "Bureautique",
+    description: "Imprimantes, copieurs et multifonctions pour particuliers et PME. Solutions d'impression professionnelles adaptées à vos besoins.",
+    image: bureautiqueImage
+  },
+  {
+    id: "informatique",
+    icon: Monitor,
+    title: "Informatique",
+    description: "Ordinateurs, périphériques, réseaux et solutions complètes. Configuration et maintenance de votre parc informatique.",
+    image: informatiqueImage
+  },
+  {
+    id: "caisses",
     icon: Calculator,
-    title: "Caisses Casio",
-    description: "Expert Casio • Solutions sur mesure",
-    image: caissesImage,
-    features: ["Casio officiel", "Installation", "Formation", "Support"],
-    highlight: true,
-    stats: "500+ installations"
+    title: "Caisses enregistreuses",
+    description: "Solutions de point de vente pour commerces et restauration. Expert Casio certifié avec plus de 500 installations.",
+    image: caisseImage
+  },
+  {
+    id: "audiovisuel",
+    icon: Volume2,
+    title: "Audio-visuel",
+    description: "Vidéoprojecteurs, écrans, solutions de présentation et équipements multimédias pour entreprises et salles de conférence.",
+    image: audiovisuelImage
+  }
+];
+
+const keyPoints = [
+  {
+    icon: Lightbulb,
+    title: "Conseil",
+    description: "Accompagnement personnalisé pour choisir les solutions adaptées à vos besoins et votre budget."
+  },
+  {
+    icon: ShoppingCart,
+    title: "Vente",
+    description: "Large gamme de produits de marques reconnues avec les meilleurs rapports qualité-prix."
   },
   {
     icon: Settings,
     title: "Installation",
-    description: "Service complet • Mise en service",
-    image: audiovisuelImage,
-    features: ["Livraison", "Configuration", "Tests"]
+    description: "Mise en service professionnelle, configuration et formation à l'utilisation de vos équipements."
   },
   {
-    icon: Zap,
-    title: "Maintenance",
-    description: "Intervention rapide • Dépannage",
-    image: maintenanceImage,
-    features: ["Diagnostic", "Réparation", "Pièces"]
-  },
-  {
-    icon: Star,
-    title: "Formation",
-    description: "Accompagnement • Support utilisateur",
-    image: audiovisuelImage,
-    features: ["Formation", "Manuel", "Assistance"]
+    icon: Wrench,
+    title: "Dépannage",
+    description: "Intervention rapide sur site ou en atelier, maintenance préventive et réparations."
   }
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-20 bg-gradient-subtle geometric-bg relative">
+    <section className="py-20 bg-background geometric-bg relative">
       {/* Decorative elements */}
       <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full floating-element"></div>
       <div className="absolute bottom-20 right-20 w-24 h-24 border border-primary/20 transform rotate-12 floating-delayed"></div>
@@ -48,27 +70,21 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4">
-            <div className="p-4 rounded-full bg-primary/10">
-              <Calculator className="h-12 w-12 text-primary" />
-            </div>
-          </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Services Casio
+            Nos Services
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Expert • Installation • Support
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Solutions complètes pour particuliers et professionnels dans toute la région neuchâteloise
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className={`group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden ${
-                service.highlight ? 'ring-2 ring-primary/50 shadow-strong' : ''
-              }`}
+              id={service.id}
+              className="group hover:shadow-medium transition-smooth border-0 shadow-soft bg-card/80 backdrop-blur-sm relative overflow-hidden"
             >
               {/* Service Image */}
               <div className="relative h-48 overflow-hidden rounded-t-lg">
@@ -81,9 +97,7 @@ const ServicesSection = () => {
                 <div className="absolute bottom-4 left-4 floating-element">
                   <service.icon className="h-8 w-8 text-primary-foreground drop-shadow-lg" />
                 </div>
-                {/* Decorative corner */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-secondary/30 to-transparent shape-primary"></div>
-                <div className="absolute top-2 right-2 w-3 h-3 bg-primary/60 rounded-full animate-pulse"></div>
               </div>
 
               <CardHeader className="pb-2">
@@ -91,72 +105,57 @@ const ServicesSection = () => {
                   <service.icon className="h-5 w-5" />
                   {service.title}
                 </CardTitle>
-                <CardDescription className="text-sm">
+                <CardDescription className="text-sm line-clamp-3">
                   {service.description}
                 </CardDescription>
-                {service.stats && (
-                  <div className="text-xs text-primary font-medium">
-                    {service.stats}
-                  </div>
-                )}
               </CardHeader>
 
-              <CardContent className="space-y-4">
-                {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-2">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-xs text-muted-foreground">
-                      <CheckCircle className="w-3 h-3 text-primary mr-2 flex-shrink-0" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-
+              <CardContent>
                 <Button 
                   variant="outline" 
                   size="sm" 
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-smooth"
-                  onClick={() => window.location.href = `/devis?service=${service.title.toLowerCase().includes('caisse') ? 'caisses' : 'bureautique'}`}
+                  onClick={() => window.location.href = `/offre?service=${service.id}`}
                 >
-                  <Calculator className="mr-2 h-4 w-4" />
-                  Devis
+                  <FileText className="mr-2 h-4 w-4" />
+                  Demande d'offre
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-16">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Calculator className="h-8 w-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">500+</div>
-              <div className="text-sm text-muted-foreground">Caisses installées</div>
-            </div>
-            <div className="text-center">
-              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Settings className="h-8 w-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">24h</div>
-              <div className="text-sm text-muted-foreground">Intervention</div>
-            </div>
-            <div className="text-center">
-              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <Star className="h-8 w-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">29</div>
-              <div className="text-sm text-muted-foreground">Années</div>
-            </div>
-            <div className="text-center">
-              <div className="p-4 rounded-full bg-primary/10 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Satisfaction</div>
-            </div>
+        {/* Key Points Section */}
+        <div className="bg-gradient-to-br from-muted/50 to-muted/30 rounded-3xl p-8 lg:p-12">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+              Notre engagement pour tous nos services
+            </h3>
+            <p className="text-muted-foreground">
+              4 piliers qui font notre différence depuis 29 ans
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {keyPoints.map((point, index) => (
+              <Card key={index} className="text-center shadow-soft border-0 bg-card hover:shadow-medium transition-smooth group">
+                <CardContent className="p-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-primary mb-4 group-hover:scale-110 transition-smooth">
+                    <point.icon className="h-8 w-8 text-primary-foreground" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-foreground mb-2">{point.title}</h4>
+                  <p className="text-sm text-muted-foreground">{point.description}</p>
+                  <Button 
+                    variant="link" 
+                    size="sm" 
+                    className="mt-4 text-primary"
+                    onClick={() => window.location.href = `/offre`}
+                  >
+                    Demande d'offre →
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
